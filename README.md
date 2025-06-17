@@ -90,12 +90,35 @@ The application uses SQLAlchemy with support for both PostgreSQL (production) an
 
 ## Deployment
 
-### Render
+### One-Click Deploy to Render
 
-1. Create a new Web Service on Render
-2. Connect your GitHub repository
-3. Set environment variables
-4. Deploy
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/senjinshuji/image-to-video-backend)
+
+### Manual Deployment to Render
+
+1. Go to [Render Dashboard](https://dashboard.render.com)
+2. Click "New +" → "Web Service"
+3. Connect your GitHub account and select this repository
+4. Use these settings:
+   - **Name**: image-to-video-api
+   - **Environment**: Python 3
+   - **Build Command**: `pip install -r requirements.txt`
+   - **Start Command**: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+
+5. Add environment variables:
+   ```
+   APP_ENV=production
+   DEBUG=false
+   CORS_ORIGINS=["https://your-frontend-url.vercel.app"]
+   
+   # Add as secrets:
+   OPENAI_API_KEY=your-openai-api-key
+   KLING_ACCESS_KEY=your-kling-access-key
+   KLING_SECRET_KEY=your-kling-secret-key
+   JWT_SECRET_KEY=your-jwt-secret
+   ```
+
+6. Click "Create Web Service"
 
 ### Docker (Optional)
 
