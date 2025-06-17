@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     DEBUG: bool = Field(default=False, env="DEBUG")
     
     # Database
-    DATABASE_URL: str = Field(..., env="DATABASE_URL")
+    DATABASE_URL: str = Field(default="sqlite+aiosqlite:///./app.db", env="DATABASE_URL")
     
     @validator("DATABASE_URL", pre=True)
     def validate_database_url(cls, v: str) -> str:
