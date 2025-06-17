@@ -6,7 +6,7 @@ python-multipart==0.0.6
 # Database
 sqlalchemy==2.0.25
 alembic==1.13.1
-psycopg2-binary==2.9.9
+# psycopg2-binary==2.9.9  # Commented out - will be installed separately if needed
 
 # Async PostgreSQL driver
 asyncpg==0.29.0
@@ -37,8 +37,8 @@ pillow==10.2.0
 celery==5.3.6
 redis==5.0.1
 
-# CORS
-fastapi-cors==0.0.6
+# CORS is built into FastAPI, no separate package needed
+# fastapi-cors==0.0.6
 
 # Testing
 pytest==7.4.4
