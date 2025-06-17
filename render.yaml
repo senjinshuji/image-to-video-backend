@@ -11,12 +11,12 @@ services:
           name: image-to-video-db
           property: connectionString
       - key: PYTHON_VERSION
-        value: 3.11.0
+        value: "3.11"
       - key: APP_ENV
         value: production
       - key: DEBUG
         value: False
-      - key: CORS_ORIGINS
+      - key: BACKEND_CORS_ORIGINS
         value: '["https://image-to-video-frontend-mbj011s5m-senjinshujis-projects.vercel.app"]'
       - key: JWT_SECRET_KEY
         generateValue: true
