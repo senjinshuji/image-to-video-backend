@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: image-to-video-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: image-to-video-db
+          property: connectionString
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: APP_ENV
+        value: production
+      - key: DEBUG
+        value: False
+      - key: CORS_ORIGINS
+        value: '["https://image-to-video-frontend-mbj011s5m-senjinshujis-projects.vercel.app"]'
+      # Add these in Render dashboard as secrets:
+      # - OPENAI_API_KEY
+      # - KLING_ACCESS_KEY
+      # - KLING_SECRET_KEY
+      # - JWT_SECRET_KEY
+
+databases:
+  - name: image-to-video-db
+    databaseName: image_to_video
+    plan: starter
